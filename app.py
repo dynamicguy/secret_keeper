@@ -11,7 +11,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456790'
 
 # Create in-memory database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/db.sqlite'
+#dbname=d9fsb63lvi7t81 host=ec2-23-23-237-0.compute-1.amazonaws.com port=5432 user=oteqvtwvsdsbwg password=joqwk_RXjraBB91B1D16_H8h2L sslmode=require
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://oteqvtwvsdsbwg:joqwk_RXjraBB91B1D16_H8h2L@ec2-23-23-237-0.compute-1.amazonaws.com/d9fsb63lvi7t81'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://keeper:please@localhost/secret-keeper'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
