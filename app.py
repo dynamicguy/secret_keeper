@@ -1,3 +1,4 @@
+import os
 from flask import Flask, url_for, redirect, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -8,7 +9,7 @@ from flask.ext.admin.contrib import sqlamodel
 app = Flask(__name__)
 
 # Create dummy secrey key so we can use sessions
-app.config['SECRET_KEY'] = '123456790'
+app.config['SECRET_KEY'] = '1f2f3f456790'
 
 # Create in-memory database
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/db.sqlite'
@@ -150,4 +151,5 @@ if __name__ == '__main__':
 
     # Start app
     app.debug = True
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
