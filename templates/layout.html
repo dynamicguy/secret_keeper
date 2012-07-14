@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <span class="brand">Secret keeper</span>
             <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 {% if user and user.is_authenticated() %}
                 <li><a href="{{ url_for('posts_view') }}">Posts</a></li>
                 {% else %}
