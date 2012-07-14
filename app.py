@@ -202,7 +202,7 @@ def login_view():
 def register_view():
     form = RegistrationForm(request.form)
     if form.validate_on_submit():
-        user = User(form.login.data, request.form['password'])
+        user = User()
         form.populate_obj(user)
         user.set_password(request.form['password'])
         db.session.add(user)
