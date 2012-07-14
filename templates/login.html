@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Login</h2>
+{% if form.errors %}
+<div class="alert alert-block alert-error fade in">
+    <h4 class="alert-heading">Your form contains {{ form.errors|count }} errors</h4>
+</div>
+{% endif %}
+<form action="{{ url_for('login_view') }}" method=post>
+    {{ form.hidden_tag() }}
+    {% for f in form %}
+    <div class="control-group">
+        {{ f.label  if f.label.text != 'Csrf Token' }}
+        <div class="controls{{ ' error-input' if f.errors }}">{{ f }}</div>
+        {% if f.errors %}
+        <ul>
+            {% for e in f.errors %}
+            <li class="error">{{ e }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Login" class="btn btn-primary"/>
+</form>
+{% endblock %}

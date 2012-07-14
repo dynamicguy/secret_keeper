@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome{% endblock %} &mdash; Secret Keeper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/fonts.css') }}"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body class=page>
+<div class="navbar navbar-fixed-top nice">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <span class="brand">Secret keeper</span>
+            <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                {% if user and user.is_authenticated() %}
+                <li><a href="{{ url_for('posts_view') }}">Posts</a></li>
+                {% else %}
+                <li><a href="{{ url_for('register_view') }}">Register</a></li>
+                <li><a href="{{ url_for('login_view') }}">Login</a></li>
+                {% endif %}
+            </ul>
+            <div class="btn-group pull-right">
+                {% if user and user.is_authenticated() %}
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i> {{ user.login }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ url_for('logout_view') }}">Logout</a></li>
+                </ul>
+                {% else %}
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i> Login
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('login_view') }}">Login</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ url_for('register_view') }}">Register</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container-fluid">-->
+    <!--<ul class="breadcrumb">-->
+        <!--<li><a href="#">Home</a> <span class="divider">/</span></li>-->
+        <!--<li><a href="#">Library</a> <span class="divider">/</span></li>-->
+        <!--<li class="active">Data</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            {% block sidebar %}
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Sidebar</li>
+                    <li class="active"><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="nav-header">Sidebar</li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="nav-header">Sidebar</li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+            {% endblock %}
+        </div>
+        <div class="span9">
+            <div class="well content">
+                {% with flashes = get_flashed_messages() %}
+                {% if flashes %}
+                <div class="alert alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {% for message in flashes %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© Company 2012</p>
+    </footer>
+</div>
+
+<script type=text/javascript src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+</body>
+</html>
