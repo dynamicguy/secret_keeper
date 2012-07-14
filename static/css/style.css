@@ -1,0 +1,41 @@
+body {
+    position: relative;
+    padding-top: 60px;
+    background-color: white;
+    background-image: url(../img/grid-18px-masked.png);
+    background-repeat: repeat-x;
+    background-position: 0 40px;
+}
+
+footer p {
+    text-align: center;
+}
+.navbar-inner {
+    background: #2daebf url(../img/overlay-button.png) repeat-x 0 0;
+    font-size: 13px;
+    font-weight: bold;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
+}
+.navbar .nav > li > a{
+    padding: 10px 10px 11px;
+}
+.navbar .nav > li > a, .navbar .brand {
+    color: white;
+    text-decoration: none;
+}
+.navbar .nav > li > a:hover, .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #007d9a;
+    color: #d5d5d5;
+}
+form dd{margin-left: 0px;}
+.alert-error ul {
+    list-style: square;
+}
+form div ul{list-style: none;margin: 0;}
+ul li.error{color: #B94A48;}
+div.error-input > input{border: 1px solid #B94A48;}
+label{font-weight: bold;}
+.content{min-height: 400px;}

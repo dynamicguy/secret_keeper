@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% for post in posts %}
+        <h3>{{ post.title }}</h3>
+        <label>{{ post.date }}</label>
+        {% for p in post.tags %}
+            <span class="label">{{ p }}</span>
+        {% endfor %}
+        <p>{{ post.text }}</p>
+    {% endfor %}
+{% endblock %}

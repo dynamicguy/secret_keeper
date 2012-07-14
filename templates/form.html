@@ -1,17 +1,32 @@
-<form method="POST" action="">
-    {{ form.hidden_tag() }}
-    {% for f in form if f.label.text != 'Csrf' %}
-    <div>
-        {{ f.label }}
-        {{ f }}
-        {% if f.errors %}
-        <ul>
-            {% for e in f.errrors %}
-            <li>{{ e }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+{% extends "layout.html" %}
+
+{% block body %}
+<div>
+    <h2>Register</h2>
+    {% if form.errors %}
+    <div class="alert alert-block alert-error fade in">
+        <h4 class="alert-heading">Your form contains {{ form.errors|count }} errors</h4>
     </div>
-    {% endfor %}
-    <input type="submit"/>
-</form>
+    {% endif %}
+    <form method="POST" action="">
+        {% for f in form %}
+        <div class="control-group">
+            {{ f.label  if f.label.text != 'Csrf Token' }}
+            <div class="controls{{ ' error-input' if f.errors }}">{{ f }}</div>
+            {% if f.errors %}
+            <ul>
+                {% for e in f.errors %}
+                <li class="error">{{ e }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary" value="Register"/>
+    </form>
+</div>
+<div>
+    Already have an account?
+    <a href="{{ url_for('login_view') }}">Login</a>
+</div>
+{% endblock %}

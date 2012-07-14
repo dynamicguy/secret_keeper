@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+
+{% block body %}
 <div>
     {% if user and user.is_authenticated() %}
     Hello {{ user.login }}! <a href="{{ url_for('logout_view') }}">Logout</a>
@@ -7,5 +10,7 @@
     {% endif %}
 </div>
 <div>
+    <a>Got clicks?</a>
     <a href="{{ url_for('admin.index') }}">Go to admin!</a>
 </div>
+{% endblock %}
