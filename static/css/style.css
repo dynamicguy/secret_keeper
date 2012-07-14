@@ -39,3 +39,5 @@ ul li.error{color: #B94A48;}
 div.error-input > input{border: 1px solid #B94A48;}
 label{font-weight: bold;}
 .content{min-height: 400px;}
+.page-header{padding-bottom: 5px; border-top: 1px dotted #c2c2c2;border-bottom: 1px dotted #c2c2c2;}
+h1{text-align: center;padding-bottom: 10px;}

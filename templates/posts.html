@@ -1,12 +1,16 @@
 {% extends "layout.html" %}
 
 {% block body %}
+    <h1>All posts</h1>
     {% for post in posts %}
-        <h3>{{ post.title }}</h3>
-        <label>{{ post.date }}</label>
-        {% for p in post.tags %}
+        <div class="page-header">
+            <h3>{{ post.title }}</h3>
+            <label>{{ post.date }}</label>
+            {% for p in post.tags %}
             <span class="label">{{ p }}</span>
-        {% endfor %}
-        <p>{{ post.text }}</p>
+            {% endfor %}
+        </div>
+        <div class="content"><p>{{ post.text }}</p></div>
+        <hr/>
     {% endfor %}
 {% endblock %}
